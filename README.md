@@ -178,36 +178,6 @@ var mapLayout = {
   paper_bgcolor: '#1f1f1f',
   font: { color: 'white' }
 };
-    
-// Grid Map Placeholder (Scatter Geo or Static Dummy)
-var mapData = [{
-  type: 'scattergeo',
-  locationmode: 'USA-states',
-  lat: [39.3, 42.0, 36.5],
-  lon: [-76.6, -93.1, -115.1],
-  text: ['Gridport Sub', 'Maple Sub', 'Elmwood Sub'],
-  marker: {
-    size: 14,
-    color: ['red', 'orange', 'green']
-  }
-}];
-
-var mapLayout = {
-  title: 'Substation Grid Locations',
-  geo: {
-    scope: 'usa',
-    projection: {
-      type: 'albers usa'
-    },
-    showland: true,
-    landcolor: '#0e1117',
-    subunitwidth: 1,
-    subunitcolor: '#ffffff',
-    bgcolor: '#1f1f1f'
-  },
-  paper_bgcolor: '#1f1f1f',
-  font: { color: 'white' }
-};
 
 Plotly.newPlot('map-chart', mapData, mapLayout);
 </script>
