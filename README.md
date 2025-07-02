@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solar Storm – Power Grid Monitoring</title>
@@ -63,7 +64,7 @@
         </div>
 
         <div class="section">
-            <img src="dashboard_map.png" alt="Grid Map">
+        <div id="dashboard-map" style="height: 300px;"></div>
         </div>
 
         <div class="section">
@@ -79,18 +80,18 @@
     <div class="chart-row">
         <div class="chart">
             <h4>Transformer GIC</h4>
-            <img src="gic_chart_placeholder.png" alt="GIC Chart">
+            <div id="gic-chart" style="height: 300px;"></div>
         </div>
         <div class="chart">
             <h4>Voltage Stability</h4>
-            <img src="voltage_chart_placeholder.png" alt="Voltage Chart">
+            <div id="voltage-chart" style="height: 300px;"></div>
         </div>
     </div>
 
     <div class="bottom-row">
         <div class="chart">
             <h4>Risk Levels</h4>
-            <img src="risk_levels_chart_placeholder.png" alt="Risk Pie Chart">
+            <div id="risk-level-chart" style="height: 300px;"></div>
         </div>
         <div class="chart">
             <h4>Substation Status</h4>
@@ -99,6 +100,21 @@
             <p><strong>Elmwood Sub 43:</strong> GIC 63 A</p>
         </div>
     </div>
+<script>
+    var gicData = {
+        x: [1, 2, 3, 4, 5, 6, 7, 8],
+        y: [30, 35, 33, 36, 40, 42, 45, 47],
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: {color: 'orange'}
+    };
 
+    Plotly.newPlot('gic-chart', [gicData], {
+        paper_bgcolor: '#1f1f1f',
+        plot_bgcolor: '#1f1f1f',
+        font: {color: 'white'},
+        margin: { t: 30, b: 40 }
+    });
+</script>
 </body>
 </html>
