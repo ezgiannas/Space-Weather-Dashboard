@@ -1,61 +1,104 @@
-import streamlit as st
-import plotly.graph_objs as go
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Storm – Power Grid Monitoring</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0e1117;
+            color: white;
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1.5fr 2.5fr 1.5fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .section, .box {
+            background-color: #1f1f1f;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .chart-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .chart {
+            flex: 1;
+            background-color: #1f1f1f;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .bottom-row {
+            display: flex;
+            gap: 20px;
+        }
+        img {
+            width: 100%;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h2>SOLAR STORM – POWER GRID MONITORING</h2>
 
-# Set page config
-st.set_page_config(layout="wide", page_title="Solar Storm Power Grid Monitoring")
+    <div class="grid">
+        <div class="section">
+            <h3 style="color: orange;">SOLAR STORM (G3 STRONG)</h3>
+            <p><strong>Kp index:</strong> 7</p>
+            <p><strong>Expected:</strong> 8:00 PM – 3:00 AM</p>
+            <p><strong>Solar wind speed:</strong> 709 km/s</p>
+            <p><strong>Density:</strong> 18.5 p/cm³</p>
+            <p><strong>Bz:</strong> -15 nT</p>
+            <p style="color: orange;"><strong>ALERT</strong></p>
+        </div>
 
-# --- Header ---
-st.markdown("""
-    <h2 style='text-align: center; color: white;'>SOLAR STORM – POWER GRID MONITORING</h2>
-""", unsafe_allow_html=True)
+        <div class="section">
+            <img src="dashboard_map.png" alt="Grid Map">
+        </div>
 
-# --- Top Row: Storm Info | Map | Recommendations ---
-top_col1, top_col2, top_col3 = st.columns([1.5, 2.5, 1.5])
+        <div class="section">
+            <h3>OPERATIONAL RECOMMENDATIONS</h3>
+            <ul>
+                <li>Reduce loading on high-risk transformers</li>
+                <li>Adjust transformer taps to limit GIC</li>
+                <li>Consider delaying planned maintenance</li>
+            </ul>
+        </div>
+    </div>
 
-with top_col1:
-    st.markdown("### SOLAR STORM (G3 STRONG)")
-    st.write("**Kp index:** 7")
-    st.write("**Expected:** 8:00 PM – 3:00 AM")
-    st.write("**Solar wind speed:** 709 km/s")
-    st.write("**Density:** 18.5 p/cm³")
-    st.write("**Bz:** -15 nT")
-    st.markdown("<span style='color:orange; font-weight:bold;'>ALERT</span>", unsafe_allow_html=True)
+    <div class="chart-row">
+        <div class="chart">
+            <h4>Transformer GIC</h4>
+            <img src="gic_chart_placeholder.png" alt="GIC Chart">
+        </div>
+        <div class="chart">
+            <h4>Voltage Stability</h4>
+            <img src="voltage_chart_placeholder.png" alt="Voltage Chart">
+        </div>
+    </div>
 
-with top_col2:
-    st.image("dashboard_map.png", caption="Map of power grid risk levels")
+    <div class="bottom-row">
+        <div class="chart">
+            <h4>Risk Levels</h4>
+            <img src="risk_levels_chart_placeholder.png" alt="Risk Pie Chart">
+        </div>
+        <div class="chart">
+            <h4>Substation Status</h4>
+            <p><strong>Gridport Sub:</strong> High</p>
+            <p><strong>Maple Sub 85:</strong> Trap rot: 134 °F</p>
+            <p><strong>Elmwood Sub 43:</strong> GIC 63 A</p>
+        </div>
+    </div>
 
-with top_col3:
-    st.markdown("### OPERATIONAL RECOMMENDATIONS")
-    st.markdown("- Reduce loading on high-risk transformers")
-    st.markdown("- Adjust transformer taps to limit GIC")
-    st.markdown("- Consider delaying planned maintenance")
-
-# --- Middle Row: GIC + Voltage Stability ---
-middle_col1, middle_col2 = st.columns(2)
-
-gic_fig = go.Figure()
-gic_fig.add_trace(go.Scatter(y=[30, 32, 33, 34, 36, 40, 42, 47, 52, 60, 65, 70], mode='lines', line=dict(color='orange')))
-gic_fig.update_layout(title='Transformer GIC', paper_bgcolor='#0e1117', plot_bgcolor='#0e1117', font=dict(color='white'))
-
-voltage_fig = go.Figure()
-voltage_fig.add_trace(go.Scatter(y=[0.98, 0.97, 0.965, 0.95, 0.955, 0.96, 0.955, 0.96, 0.95, 0.94, 0.93, 0.92], mode='lines', line=dict(color='orange')))
-voltage_fig.update_layout(title='Voltage Stability', paper_bgcolor='#0e1117', plot_bgcolor='#0e1117', font=dict(color='white'))
-
-middle_col1.plotly_chart(gic_fig, use_container_width=True)
-middle_col2.plotly_chart(voltage_fig, use_container_width=True)
-
-# --- Bottom Row: Risk Levels + Substation Status ---
-bottom_col1, bottom_col2 = st.columns(2)
-
-risk_fig = go.Figure()
-risk_fig.add_trace(go.Pie(labels=['High', 'Medium', 'Low'], values=[28, 41, 31],
-                          marker=dict(colors=['#d9534f', '#f0ad4e', '#5cb85c']), hole=0.4))
-risk_fig.update_layout(title='Risk Levels', paper_bgcolor='#0e1117', font=dict(color='white'))
-
-bottom_col1.plotly_chart(risk_fig, use_container_width=True)
-
-with bottom_col2:
-    st.markdown("### SUBSTATION STATUS")
-    st.write("**Gridport Sub:** High")
-    st.write("**Maple Sub 85:** Trap rot: 134 °F")
-    st.write("**Elmwood Sub 43:** GIC 63 A")
+</body>
+</html>
