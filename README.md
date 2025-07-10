@@ -80,7 +80,7 @@
     <div class="chart-row">
         <div class="chart">
             <h4>Transformer GIC</h4>
-            <img src="Transformer GIC.png" alt="Transformer GIC" style="width:100%; border-radius:8px;">
+            <img src="Transformer-GIC.png" alt="Transformer GIC" style="width:100%; border-radius:8px;">
         </div>
         <div class="chart">
             <h4>Voltage Stability</h4>
@@ -91,7 +91,7 @@
     <div class="bottom-row">
         <div class="chart">
             <h4>Risk Levels</h4>
-            <img src="Risk Level.png" alt="Risk Levels" style="width:100%; border-radius:8px;">
+            <img src="Risk-Level.png" alt="Risk Levels" style="width:100%; border-radius:8px;">
         </div>
         <div class="chart">
             <h4>Substation Status</h4>
