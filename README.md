@@ -102,3 +102,12 @@
     </div>
 </body>
 </html>
+
+<!-- This is a single-line comment -->
+
+<!-- 
+This is a multi-line comment.
+You can use it to explain more complex sections of your code.
+-->
+
+<!-- Example: Temporarily disabling a line of code --> 
