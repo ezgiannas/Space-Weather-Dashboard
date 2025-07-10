@@ -80,18 +80,18 @@
     <div class="chart-row">
         <div class="chart">
             <h4>Transformer GIC</h4>
-            <div id="gic-chart" style="height: 300px;"></div>
+            <img src="Transformer GIC.png" alt="Transformer GIC" style="width:100%; border-radius:8px;">
         </div>
         <div class="chart">
             <h4>Voltage Stability</h4>
-            <div id="voltage-chart" style="height: 300px;"></div>
+            <img src="Voltage.png" alt="Voltage Stability" style="width:100%; border-radius:8px;">
         </div>
     </div>
 
     <div class="bottom-row">
         <div class="chart">
             <h4>Risk Levels</h4>
-            <div id="risk-chart" style="height: 300px;"></div>
+            <img src="Risk Level.png" alt="Risk Levels" style="width:100%; border-radius:8px;">
         </div>
         <div class="chart">
             <h4>Substation Status</h4>
@@ -100,86 +100,5 @@
             <p><strong>Elmwood Sub 43:</strong> GIC 63 A</p>
         </div>
     </div>
-<script>
-    // GIC Chart
-  var gicData = {
-    x: [1, 2, 3, 4, 5, 6, 7],
-    y: [30, 35, 40, 42, 45, 47, 50],
-    type: 'scatter',
-    mode: 'lines+markers',
-    line: { color: 'orange' }
-  };
-
-  Plotly.newPlot('gic-chart', [gicData], {
-    title: 'Transformer GIC',
-    paper_bgcolor: '#1f1f1f',
-    plot_bgcolor: '#1f1f1f',
-    font: { color: 'white' }
-  });
-
-  // Voltage Stability Chart
-  var voltageData = {
-    x: [1, 2, 3, 4, 5, 6, 7],
-    y: [0.98, 0.97, 0.965, 0.955, 0.95, 0.945, 0.94],
-    type: 'scatter',
-    mode: 'lines+markers',
-    line: { color: 'cyan' }
-  };
-
-  Plotly.newPlot('voltage-chart', [voltageData], {
-    title: 'Voltage Stability',
-    paper_bgcolor: '#1f1f1f',
-    plot_bgcolor: '#1f1f1f',
-    font: { color: 'white' }
-  });
-    // Risk Level Pie Chart
-  var riskData = [{
-    values: [28, 41, 31],
-    labels: ['High', 'Medium', 'Low'],
-    type: 'pie',
-    marker: {
-      colors: ['#d9534f', '#f0ad4e', '#5cb85c']
-    },
-    hole: 0.3
-  }];
-
-  Plotly.newPlot('risk-chart', riskData, {
-    title: 'Risk Levels',
-    paper_bgcolor: '#1f1f1f',
-    font: { color: 'white' }
-  });
-
-  // Grid Map Placeholder (Scatter Geo or Static Dummy)
-  var mapData = [{
-    type: 'scattergeo',
-    locationmode: 'USA-states',
-    lat: [39.3, 42.0, 36.5],
-    lon: [-76.6, -93.1, -115.1],
-    text: ['Gridport Sub', 'Maple Sub', 'Elmwood Sub'],
-    marker: {
-      size: 14,
-      color: ['red', 'orange', 'green']
-    }
-  }];
-
-var mapLayout = {
-  title: 'Substation Grid Locations',
-  geo: {
-    scope: 'usa',
-    projection: {
-      type: 'albers usa'
-    },
-    showland: true,
-    landcolor: '#0e1117',
-    subunitwidth: 1,
-    subunitcolor: '#ffffff',
-    bgcolor: '#1f1f1f'
-  },
-  paper_bgcolor: '#1f1f1f',
-  font: { color: 'white' }
-};
-
-Plotly.newPlot('map-chart', mapData, mapLayout);
-</script>
 </body>
 </html>
