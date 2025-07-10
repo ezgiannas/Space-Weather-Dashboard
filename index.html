@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solar Storm – Power Grid Monitoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <style>
         body {
@@ -23,12 +22,12 @@
             gap: 20px;
             margin-bottom: 30px;
         }
-     .section, .box {
-    background-color: #1f1f1f;
-    padding: 15px;
-    border-radius: 8px;    
+        .section, .box {
+            background-color: #1f1f1f;
+            padding: 15px;
+            border-radius: 8px;
         }
-        .chart-row {
+        .chart-row, .bottom-row {
             display: flex;
             gap: 20px;
             margin-bottom: 30px;
@@ -38,29 +37,48 @@
             background-color: #1f1f1f;
             padding: 15px;
             border-radius: 8px;
-            max-height: 350px; 
-            overflow: hidden; 
+            max-height: 350px;
+            overflow: hidden;
         }
         .chart.small-chart {
             max-height: 250px;
             padding: 10px;
-            overflow: hidden;
-        }
-        .bottom-row {
-            display: flex;
-            gap: 20px;
         }
         img {
             width: 100%;
+            max-height: 250px;
+            object-fit: contain;
             border-radius: 8px;
+        }
+        .hidden {
+            display: none;
+        }
+        .go-button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 24px;
+            font-size: 1rem;
+            background-color: #28a745;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .go-button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
+
     <h2>SOLAR STORM – POWER GRID MONITORING</h2>
 
+    <!-- GO Button -->
+    <button class="go-button" onclick="revealDashboard()">GO</button>
+
     <div class="grid">
-        <div class="section">
+        <div class="section hidden" id="storm-info">
             <h3 style="color: orange;">SOLAR STORM (G3 STRONG)</h3>
             <p><strong>Kp index:</strong> 7</p>
             <p><strong>Expected:</strong> 8:00 PM – 3:00 AM</p>
@@ -71,10 +89,10 @@
         </div>
 
         <div class="section">
-        <div id="map-chart" style="height: 300px;"></div>
+            <div id="map-chart" style="height: 300px;"></div>
         </div>
 
-        <div class="section">
+        <div class="section hidden" id="recommendations">
             <h3>OPERATIONAL RECOMMENDATIONS</h3>
             <ul>
                 <li>Reduce loading on high-risk transformers</li>
@@ -87,18 +105,18 @@
     <div class="chart-row">
         <div class="chart small-chart">
             <h4>Transformer GIC</h4>
-            <img src="Transformer-GIC.png" alt="Transformer GIC" style="width:100%; max-height:250px; object-fit: contain; border-radius:8px;">
+            <img src="Transformer-GIC.png" id="gic-img" class="hidden" alt="Transformer GIC">
         </div>
         <div class="chart small-chart">
             <h4>Voltage Stability</h4>
-            <img src="Voltage.png" alt="Voltage Stability" style="width:100%; max-height:250px; object-fit: contain; border-radius:8px;">
+            <img src="Voltage.png" id="voltage-img" class="hidden" alt="Voltage Stability">
         </div>
     </div>
 
     <div class="bottom-row">
-       <div class="chart small-chart">
+        <div class="chart small-chart">
             <h4>Risk Levels</h4>
-            <img src="Risk-Level.png" alt="Risk Levels" style="width:100%; max-height:250px; object-fit: contain; border-radius:8px;">
+            <img src="Risk-Level.png" id="risk-img" class="hidden" alt="Risk Levels">
         </div>
         <div class="chart">
             <h4>Substation Status</h4>
@@ -107,5 +125,16 @@
             <p><strong>Elmwood Sub 43:</strong> GIC 63 A</p>
         </div>
     </div>
+
+    <script>
+        function revealDashboard() {
+            document.getElementById('storm-info').classList.remove('hidden');
+            document.getElementById('recommendations').classList.remove('hidden');
+            document.getElementById('gic-img').classList.remove('hidden');
+            document.getElementById('voltage-img').classList.remove('hidden');
+            document.getElementById('risk-img').classList.remove('hidden');
+        }
+    </script>
+
 </body>
 </html>
