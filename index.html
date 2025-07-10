@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solar Storm – Power Grid Monitoring</title>
@@ -64,7 +64,7 @@
         </div>
 
         <div class="section">
-            <img src="dashboard_map.png" alt="Grid Map">
+        <div id="map-chart" style="height: 300px;"></div>
         </div>
 
         <div class="section">
@@ -80,18 +80,18 @@
     <div class="chart-row">
         <div class="chart">
             <h4>Transformer GIC</h4>
-            <img src="gic_chart_placeholder.png" alt="GIC Chart">
+            <img src="Transformer-GIC.png" alt="Transformer GIC" style="width:100%; border-radius:8px;">
         </div>
         <div class="chart">
             <h4>Voltage Stability</h4>
-            <img src="voltage_chart_placeholder.png" alt="Voltage Chart">
+            <img src="Voltage.png" alt="Voltage Stability" style="width:100%; border-radius:8px;">
         </div>
     </div>
 
     <div class="bottom-row">
         <div class="chart">
             <h4>Risk Levels</h4>
-            <img src="risk_levels_chart_placeholder.png" alt="Risk Pie Chart">
+            <img src="Risk-Level.png" alt="Risk Levels" style="width:100%; border-radius:8px;">
         </div>
         <div class="chart">
             <h4>Substation Status</h4>
